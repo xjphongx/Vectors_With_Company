@@ -115,7 +115,25 @@ void getCompanies(vector<Person> & employee, vector<string> & companyNames)
             {
                 //companyNames.erase(companyNames.at(d));
                 companyNames.erase(companyNames.begin()+d);
-                
+                /*
+                    HELP HERERRRRREEEEEE
+                   
+                   Filtered Results
+                    Intel
+                    Boeing
+                    Douglas
+                    Raytheon
+                    HealthTech
+                    Raytheon
+                    Intel
+                    
+                    Expected Results
+                    Intel
+                    Boeing
+                    Douglas
+                    Raytheon
+                    HealthTech
+                */
                 
             }
             cout << companyNames.at(d)<< " ";//test

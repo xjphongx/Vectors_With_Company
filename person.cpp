@@ -74,9 +74,10 @@ float Person::getPayRate()
 //other functions
 float Person::totalPay()
 {
-
+    return payRate*hoursWorked;
 }
 string Person::fullName()
 {
-    
+    string temp = firstName + " " + lastName;
+    return temp;
 }

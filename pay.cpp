@@ -6,7 +6,6 @@
 #include <algorithm>
 
 #include "person.cpp"
-#include "person.h"
 
 using namespace std;
 
@@ -74,14 +73,13 @@ void readData(vector <Person> & employee)
         employee.push_back(temp);//this pushes back by referencing to the vector
     }
     //testing this
+    cout << "testing if the id matches the first name: results below"<<endl;
     for(unsigned a = 0; a <employee.size()-1; a++)//-1 bc last entry will duplicate
     {
         string test = employee.at(a).getFirstName();
         int test2 = employee.at(a).getEmployeeID();
         cout << test <<" "<<test2<< endl;
     }
-
-
 
     inputFile.close();
 }
@@ -105,7 +103,7 @@ void getCompanies(vector<Person> & employee, vector<string> & companyNames)
     //companyNames should only contain unique names without duplication
     sort(companyNames.begin(), companyNames.end());
     //testing what sort will do
-    cout << "sorted function results"<<endl;
+    cout << "\ntesting the sort function: results are below"<<endl;
     for (unsigned z = 0 ; z < companyNames.size(); z++)
     {
         cout<< companyNames.at(z) <<endl;
@@ -114,7 +112,7 @@ void getCompanies(vector<Person> & employee, vector<string> & companyNames)
     companyNames.erase(unique(companyNames.begin(), companyNames.end()),companyNames.end());
     //had to implement a sorting algorithm
 //another test
-    cout << "Filtered Results"<< endl;
+    cout << "\ntesting the getCompanies function: Filtered Results below"<< endl;
     for (unsigned z = 0 ; z < companyNames.size(); z++)
     {
         cout<< companyNames.at(z) <<endl;
@@ -179,55 +177,60 @@ Aborted (core dumped)
     int rayTotal = 0;
     int healthTotal = 0;
 
-    for(unsigned index = 0; 0 < employee.size()-1;index++)
+    for(unsigned index = 0; index < employee.size()-1;index++)
     {
 
         //condition statements to separate into company groups
         if(employee.at(index).getCompanyName() == "Intel")
         {
-            intelFile << employee.at(index).fullName();
-            intelFile << employee.at(index).getEmployeeID();
-            intelFile << employee.at(index).getCompanyName();
-            intelFile << employee.at(index).totalPay()<<"\n";
+            intelFile <<setw(10) << left << employee.at(index).getFirstName();
+            intelFile << setw(10) << left << employee.at(index).getLastName();
+            intelFile <<setw(5) << right<<  employee.at(index).getEmployeeID();
+            intelFile <<setw(10)<<right<< employee.at(index).getCompanyName() << " $";
+            intelFile << fixed<< setprecision(2)<< employee.at(index).totalPay()<<endl;
             intTotal += employee.at(index).totalPay();
 
         }else if(employee.at(index).getCompanyName() == "Boeing")
         {
-            boeingFile << employee.at(index).fullName();
-            boeingFile << employee.at(index).getEmployeeID();
-            boeingFile << employee.at(index).getCompanyName();
-            boeingFile << employee.at(index).totalPay()<<"\n";
+            boeingFile <<setw(10) << left << employee.at(index).getFirstName();
+            boeingFile << setw(10) << left << employee.at(index).getLastName();
+            boeingFile <<setw(5) << right<<  employee.at(index).getEmployeeID();
+            boeingFile <<setw(10)<<right<< employee.at(index).getCompanyName() << " $";
+            boeingFile << fixed<< setprecision(2)<< employee.at(index).totalPay()<<endl;
             boeTotal += employee.at(index).totalPay();
         }else if (employee.at(index).getCompanyName() == "Douglas")
         {
-            douglasFile << employee.at(index).fullName();
-            douglasFile << employee.at(index).getEmployeeID();
-            douglasFile << employee.at(index).getCompanyName();
-            douglasFile << employee.at(index).totalPay()<<"\n";
+            douglasFile <<setw(10) << left << employee.at(index).getFirstName();
+            douglasFile << setw(10) << left << employee.at(index).getLastName();
+            douglasFile <<setw(5) << right<<  employee.at(index).getEmployeeID();
+            douglasFile <<setw(10)<<right<< employee.at(index).getCompanyName() << " $";
+            douglasFile << fixed<< setprecision(2)<< employee.at(index).totalPay()<<endl;
             dougTotal += employee.at(index).totalPay();
         }else if (employee.at(index).getCompanyName() == "Raytheon")
         {
-            raytheonFile << employee.at(index).fullName();
-            raytheonFile << employee.at(index).getEmployeeID();
-            raytheonFile << employee.at(index).getCompanyName();
-            raytheonFile << employee.at(index).totalPay()<<"\n";
+            raytheonFile <<setw(10) << left << employee.at(index).getFirstName();
+            raytheonFile << setw(10) << left << employee.at(index).getLastName();
+            raytheonFile <<setw(5) << right<<  employee.at(index).getEmployeeID();
+            raytheonFile <<setw(10)<<right<< employee.at(index).getCompanyName() << " $";
+            raytheonFile << fixed<< setprecision(2)<< employee.at(index).totalPay()<<endl;
             rayTotal += employee.at(index).totalPay();
         }else if (employee.at(index).getCompanyName() == "HealthTech")
         {
-            healthtechFile << employee.at(index).fullName();
-            healthtechFile << employee.at(index).getEmployeeID();
-            healthtechFile << employee.at(index).getCompanyName();
-            healthtechFile << employee.at(index).totalPay()<<"\n";
+            healthtechFile <<setw(10) << left << employee.at(index).getFirstName();
+            healthtechFile << setw(10) << left << employee.at(index).getLastName();
+            healthtechFile <<setw(5) << right<<  employee.at(index).getEmployeeID();
+            healthtechFile <<setw(10)<<right<< employee.at(index).getCompanyName() << " $";
+            healthtechFile << fixed<< setprecision(2)<< employee.at(index).totalPay()<<endl;
             healthTotal += employee.at(index).totalPay();
         }
 
     }
     //cout total employee pay
-    intelFile <<"$" << fixed<< setprecision(2)<<intTotal;
-    boeingFile <<"$" << fixed<< setprecision(2)<<boeTotal;
-    douglasFile <<"$" << fixed<< setprecision(2)<<dougTotal;
-    raytheonFile <<"$" << fixed<< setprecision(2)<<rayTotal;
-    healthtechFile <<"$" << fixed<< setprecision(2)<<healthTotal;
+    intelFile <<"Total: $" << fixed<< setprecision(2)<<intTotal;
+    boeingFile <<"Total: $" << fixed<< setprecision(2)<<boeTotal;
+    douglasFile <<"Total: $" << fixed<< setprecision(2)<<dougTotal;
+    raytheonFile <<"Total: $" << fixed<< setprecision(2)<<rayTotal;
+    healthtechFile <<"Total: $" << fixed<< setprecision(2)<<healthTotal;
 
     intelFile.close();
     boeingFile.close();

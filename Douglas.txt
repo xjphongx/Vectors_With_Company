@@ -1,1 +1,4 @@
-update
+Bernard   Smith        30   Douglas $581.25
+Kimberly  Macias       50   Douglas $1820.00
+Ryan      Ward        150   Douglas $3281.00
+Total: $5682
